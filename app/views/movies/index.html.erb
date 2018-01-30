@@ -19,8 +19,8 @@
     <% @movies.each do |movie| %>
       <tr>
         <td><%= movie.title %></td>
-        <td><%= movie.poster %></td>
-        <td><%= movie.trailer %></td>
+        <td><%= image_tag (movie.poster) %></td>
+        <td><%= sanitize movie.trailer,:tags=>['iframe']%></td>
         <td><%= movie.released_on %></td>
         <td><%= movie.rating %></td>
         <td><%= movie.genre_id %></td>
@@ -33,5 +33,5 @@
 </table>
 
 <br>
-
+<%= will_paginate @movies %>
 <%= link_to 'New Movie', new_movie_path %>
